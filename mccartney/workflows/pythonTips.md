@@ -81,9 +81,7 @@ and use "myclass.MyClass" and "foo.bar.yourclass.YourClass" in the module.
 Packaging
 ==============================================================================
 
-Package imports 
-
-* The following are a few notes from Mark Lutz on Package Import.
+Package imports a few notes from Mark Lutz.
 
 In order to import modules from a package, first set the PYTHONPATH
 to look in the directory where the modules are stored. 
@@ -119,4 +117,52 @@ PEP-8 Styleguide
 
                                                                               
 * <https://www.python.org/dev/peps/pep-0008/>
+
+
+Slicing
+==============================================================================
+
+A few tips from *effective python*
+
+```
+a = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+print('First four:', a[:4])
+print('Last four: ', a[-4:])
+print('Middle two:', a[3:-3])
+
+>>>
+First four: ['a', 'b', 'c', 'd']
+Last four:  ['e', 'f', 'g', 'h']
+Middle two: ['d', 'e']
+```
+
+Omit zeros from the start of slice commands in order to reduce visual noise
+
+Cheatsheet:
+```
+a[:]      # ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+a[:5]     # ['a', 'b', 'c', 'd', 'e']
+a[:-1]    # ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+a[4:]     #                     ['e', 'f', 'g', 'h']
+a[-3:]    #                          ['f', 'g', 'h']
+a[2:5]    #           ['c', 'd', 'e']
+a[2:-1]   #           ['c', 'd', 'e', 'f', 'g']
+a[-3:-1]  #                          ['f', 'g']
+```
+
+Slicing returns a new list, reference to the original objects are maintained.
+
+**Stride**
+Used to iterate over a list, taking every *nth* item
+
+Could be useful for creating arpegio seqeunces from a given scale: 
+```
+scale = ['c','d','e','f','g','a','b','c','d','e','f','g']
+arpIMaj = scale[::2]
+arpIIMi = scale[1::2]
+```
+
+Don't get too clever though! see also `itertools.islice`
+
+
 
