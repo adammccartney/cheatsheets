@@ -44,7 +44,8 @@ Give minimal overview of contents.
 
 Possible to install package using `setup.py` file, but as we are usually
 building only on personal computer, it makes more sense to simply add the
-directory to the PYTHONPATH. 
+directory to the PYTHONPATH. Simple append the path of the new package to the
+following command in the `.bashrc`
 
 ```
 export PYTHONPATH=/home/user/newpackage1:/home/user/newpackage2
