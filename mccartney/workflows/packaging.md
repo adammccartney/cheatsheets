@@ -17,8 +17,8 @@ Create two eponymous directories.
 # contents
 
 Give minimal overview of contents. 
-
- + `./segments`             # Contains all score segments 
+```
+   `./segments`             # Contains all score segments 
     |_`__init__.py`
     | |_`./A`
       | |_ `__init__.py`
@@ -29,7 +29,7 @@ Give minimal overview of contents.
         |_ `.log`             # seg, lilypond, capture timing, date stamp
         |_ `.optimization`
 
- + `./materials`            # Contains materials used to build segments
+   `./materials`            # Contains materials used to build segments
     |_`__init__.py`
     | |_`./instruments`
       | |_ `__init__.py`
@@ -37,7 +37,7 @@ Give minimal overview of contents.
       |_`./instrumentX-pitches`
       | |_`__init__.py`
         |_`definition.py`
-
+```
 
 # Installing or adding to PYTHONPATH
 ==============================================================================
