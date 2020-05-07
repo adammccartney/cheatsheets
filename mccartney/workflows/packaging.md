@@ -18,25 +18,25 @@ Create two eponymous directories.
 
 Give minimal overview of contents. 
 ```
-   `./segments`             # Contains all score segments 
-    |_`__init__.py`
-    | |_`./A`
-      | |_ `__init__.py`
-        |_ `definition.py`
-        |_ `illustration.ly`  # lilypond score
-        |_ `illustration.ily` # lilypond music expressions (voices)
-        |_ `layout.py`
-        |_ `.log`             # seg, lilypond, capture timing, date stamp
-        |_ `.optimization`
+   ./segments             # Contains all score segments 
+    |_ __init__.py
+    | |_ ./A
+      | |_ __init__.py
+        |_ definition.py
+        |_ illustration.ly  # lilypond score
+        |_ illustration.ily # lilypond music expressions (voices)
+        |_ layout.py
+        |_ .log             # seg, lilypond, capture timing, date stamp
+        |_ .optimization
 
-   `./materials`            # Contains materials used to build segments
-    |_`__init__.py`
-    | |_`./instruments`
-      | |_ `__init__.py`
-        |_`definition.py`
-      |_`./instrumentX-pitches`
-      | |_`__init__.py`
-        |_`definition.py`
+    ./materials             # Contains materials used to build segments
+    |_ __init__.py
+    | |_ ./instruments
+      | |_ __init__.py
+        |_ definition.py`
+      |_./instrumentX-pitches
+      | |_ __init__.py
+        |_ definition.py
 ```
 
 # Installing or adding to PYTHONPATH
