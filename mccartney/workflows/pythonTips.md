@@ -12,7 +12,7 @@ Document
    + all modules
    + classes & functions exported by a module
    + Public methods
-   + A package can be documented in the __init__.py in the package directory.
+   + A package can be documented in the `__init__.py` in the package directory.
 
 Format
    + """always use triple double quotes"""
@@ -96,19 +96,19 @@ To do this
 + Formal structure: 
   
    * /dir0/dir1/dir2/mod
-     - dir1 & dir2 require __init__.py
-     - dir0 does not require __init__.py (will be ignored if present)
+     - dir1 & dir2 require `__init__.py`
+     - dir0 does not require `__init__.py` (will be ignored if present)
      - dir0, not dir0/dir1, must be listed on the module search path sys.path
 
 # Package initialization
 
 The first time python imports through a directory, it automatically runs all
-the code in the modules' __init__.py files. Because of this fact, it's a useful
+the code in the modules' `__init__.py` files. Because of this fact, it's a useful
 place to initialize a state required by files in the package. (Think about it
 like a loadbang message in max). 
 
 # Module usability declarations 
-Another use for the __init__.py files is that they declare the directory as a 
+Another use for the `__init__.py` files is that they declare the directory as a 
 python package.
 
 # Module namespace initialization
