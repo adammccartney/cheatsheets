@@ -32,7 +32,51 @@ Format
    + should summarize behavior and list the public methods and instance
      variables. 
 
+Imports 
+==============================================================================
+*notes from pep8*
 
+The relatively obvious: 
+  + imports are always put at the top of the file, after any module comments
+    /docstrings and before module globals and constants.
+
+    1. Stdlib imports
+    2. Third party
+    3. Local / application specific 
+  
+```
+import math
+
+import abjad 
+
+import frog
+```
+
+Absolute imports are recommended (see PEP8). 
+
+Explicit relative imports are an acceptable alternative.
+For instance, any score package that uses abjad is a relatively complex
+package, there for using the explicit relative import model is acceptable. 
+
+```
+from .RhythmDefinition import RhythmDefinition
+from .ScoreTemplate import ScoreTemplate
+```
+
+Imports from a class-containing module (i.e. many of the abjad modules)
+
+```
+from myclass import MyClass
+from foo.bar.yourclass import YourClass
+```
+or incase of a name clash, spell them explicitly:
+```
+import myclass
+import foo.bar.yourclass
+```
+and use "myclass.MyClass" and "foo.bar.yourclass.YourClass" in the module. 
+
+* Avoid wildcard imports.
 
 Packaging
 ==============================================================================

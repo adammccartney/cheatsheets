@@ -18,7 +18,23 @@ Create two eponymous directories.
 
 Give minimal overview of contents. 
 ```
-   ./segments             # Contains all score segments 
+    ./builds                # Contains tex built score
+
+    ./distribution
+    |_ finishedTypesetScore.pdf
+
+    ./etc                   # misc files 
+
+    ./materials             # Contains materials used to build segments
+    |_ __init__.py
+    | |_ ./instruments
+      | |_ __init__.py
+        |_ definition.py`
+      |_./instrumentX-pitches
+      | |_ __init__.py
+        |_ definition.py
+   
+    ./segments             # Contains all score segments 
     |_ __init__.py
     | |_ ./A
       | |_ __init__.py
@@ -29,14 +45,17 @@ Give minimal overview of contents.
         |_ .log             # seg, lilypond, capture timing, date stamp
         |_ .optimization
 
-    ./materials             # Contains materials used to build segments
+    ./stylesheets           # lilypond stylesheets
+
+    ./test                  # tools for testing 
+      ?
+
+    ./tools                 # Contains tools to build segments out of materials
     |_ __init__.py
-    | |_ ./instruments
-      | |_ __init__.py
-        |_ definition.py`
-      |_./instrumentX-pitches
-      | |_ __init__.py
-        |_ definition.py
+    |_ SegmentMaker.py
+    |_ RhythmDefinition.py 
+    |_ ScoreTemplate.py
+
 ```
 
 # Installing or adding to PYTHONPATH
