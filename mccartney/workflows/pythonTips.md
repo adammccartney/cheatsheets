@@ -4,6 +4,18 @@
 + Always feed python live mice
 
 
+Classes & Inheritance 
+============================================================================
+
+Use helper classes 
+   + these are a good alternative to bookkeeping with dictionaries and tuples
+
+Use functions to simplify interfaces instead of classes
+   + for instance, include a hook to report on operations being performed as 
+     part of a built in algorithm run (like sort) this hook can be a lamda
+     expression that reports these can sort side effects from deterministic behaviour
+
+
 
 Docstrings
 =============================================================================
@@ -15,9 +27,9 @@ Document
    + A package can be documented in the `__init__.py` in the package directory.
 
 Format
-   + """always use triple double quotes"""
-   + r"""raw triple double quotes""" if srtring contains backslash
-   + u"""Unicode triple-quoted strings"""
+   `"""always use triple double quotes"""`
+   `r"""raw triple double quotes""" if srtring contains backslash`
+   `u"""Unicode triple-quoted strings"""`
 
 
 One line dostrings
@@ -165,4 +177,8 @@ arpIIMi = scale[1::2]
 Don't get too clever though! see also `itertools.islice`
 
 
+# Virtual Environments
+==============================================================================
 
+To add a directory to PYTHONPATH go to bin/activate and append as if in .bashrc
+`export PYTHONPATH=/home/user/directoryToFind`
