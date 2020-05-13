@@ -43,6 +43,28 @@ def instrument(
     """
     return make_instrument_name_markup(string, column=column, hcenter_in=hcenter_in)
 
+def make_instrument_name_markup(string, *, column=True, hcenter_in=None):
+    if hcenter_in is not None:
+        assert isinstance(hcenter_in, (int, float)), repr(hcenter_in)
+    if isinstance(string, str):
+        parts = [string]
+    elif isinstance(string, list):
+        parts = string
+    else:
+        raise TypeError(string)
+    if len(parts) == 1:
+        markup = abjad.Markup(parts[0])
+    elif column:
+        markups = [abjad.Markup(_) for _ in parts]
+        markup = abjad.Markup.center_column(markups, direction=None)
+    else:
+        markups = [abjad.Markup(_) for _ in parts]
+        markups = abjad.MarkupList(markups)
+        markup = markups.line()
+    if hcenter_in is not None:
+        markup = markup.hcenter_in(hcenter_in)
+    return markup
+
 def short_instrument(
     string: str, hcenter_in: abjad.Number = 10, column: bool = True
 ) -> abjad.Markup:

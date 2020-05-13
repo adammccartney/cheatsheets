@@ -1,5 +1,6 @@
 # pythonTips.md
----------------
+--------------
+     Interestingly, a score template does not have any -
 
 + Always feed python live mice
 
