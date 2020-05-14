@@ -91,6 +91,22 @@ and use "myclass.MyClass" and "foo.bar.yourclass.YourClass" in the module.
 
 * Avoid wildcard imports.
 
+
+List Comprehensions
+=============================================================================
+
+Use a list comprehension instead of filter and map. 
+
+```
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+squares = [x**2 for x in a]
+print(squares)
+
+evensquares = [x**2 for x in a if x % 2 == 0]
+
+```
+
+
 Packaging
 ==============================================================================
 
