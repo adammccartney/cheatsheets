@@ -102,9 +102,116 @@ a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 squares = [x**2 for x in a]
 print(squares)
 
+squares = map(lambda x: x ** 2, a)
+
 evensquares = [x**2 for x in a if x % 2 == 0]
 
+alt = map(lambda x: x**2, filter(lambda x: x % 2 == 0, a))
+assert even_squares == list(alt)
+
 ```
+
+Dictionaries and sets have their own equivalents of list comprehensions
+
+```
+chile_ranks = {'ghost': 1, 'habanero': 2, 'cayenne': 3}
+rank_dict = {rank: name for name, rank in chile_ranks.items()}
+chile_len_set = {len(name) for name in rank_dict.values()}
+print(rank_dict)
+print(chile_len_set)
+```
+
+## Keep the number of expressions in a list comprehension down to two
+
+Useful for laying a matrix flat, i.e. running nested for loops
+
+```
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+flat = [x for row in matrix for x in row]
+print(flat)
+```
+
+If you want to replicate the two-level deep layout of the input list. 
+e.g. squaring each value in each cell of a 2d matrix
+
+```
+squared = [[x**2 for x in row] for row in matrix]
+print(squared)
+```
+
+Also supports multiple if statements: 
+```
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+b = [x for x in a if x <= 4 if x % 2 == 0]
+c = [x for x in a if x >= 4 and x % 2 == 0]
+```
+
+If they start to look like this, avoid
+```
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+filtered = [[x for x in row if x % 3 == 0]
+            for row in matrix if sum(row) >= 10]
+```
+
+PI\*Thumb Rule for list comprehensions
++ Avoid using more than two expressions in a list comprehension. This cany be
+  any combination of two conditions and/or loops.
+
+*List comprehensions create new lists for each value in the input seqeunce*
+
+Use Generator Expressions for Large Comprehensions
+==============================================================================
+
+*List comprehensions create new lists for each value in the input seqeunce*
+This means memory useage can grow out of control and crash a program.
+
+```
+value = [len(x) for x in open('/tmp/my_file.txt')]
+print(value)
+```
+
+To solve this, Python provides generator expressions, a generalization of list 
+comprehensions and generators. Generator expressions don’t materialize the whole 
+output sequence when they’re run. Instead, generator expressions evaluate to 
+an iterator that yields one item at a time from the expression.
+
+```
+it = (len(x) for x in open('/tmp/my_file.txt'))
+print(it)
+>>> 
+<generator object <genexpr> at 0x101b81480>
+```
+
+next function can be used to step through the generator function, always
+picks up where it left off
+
+```
+print(next(it))
+print(next(it))
+>>>
+1 
+2 
+```
+
+Generator functions
+
+```
+def rgb():
+    for r in range(256):
+        for g in range(256):
+            for b in range(256):
+                yield r, g, b
+
+it = rgb()                      
+for x in range(5):
+    print(next(it))
+```
+
+
+Lists and Mutability
+==============================================================================
+
+In stark contrasts to tuples, lists are mutable. 
 
 
 Packaging
