@@ -17,6 +17,99 @@ Use functions to simplify interfaces instead of classes
      expression that reports these can sort side effects from deterministic behaviour
 
 
+Decorators
+=============================================================================
+*see also: first class functions, closures*
+
+A decorator is a function that takes another function as an argument, adds some
+kind of functionality and then returns another function. All of this without
+altering the source code of the original function that gets passed in. 
+
+
+```
+def decorator_function(original_function):
+    def wrapper_function():
+        print('wrapper executed this before{}'.format(original_function.__name__))
+        return original_function()
+    return wrapper_function
+
+@decorator_function
+def display():
+   print('display function ran')
+
+display()
+
+>>> wrapper executed this before display
+... display function ran
+
+
+```
+
+If we want to pass a number of positional or keyword arguments to a wrapper
+function, we need to specify this in the def of wrapper_function()
+
+```
+def decorator_function(original_function):
+    def wrapper_function(*args, **kwargs):
+        print('wrapper executed this before{}'.format(original_function.__name__))
+        return original_function(*args, **kwargs)
+    return wrapper_function
+
+@decorator_function
+def display():
+   print('display function ran')
+
+@decorator_function
+def display_info(name, age):
+    print('display_info ran with arguments ({}, {})'.format(name, age))
+
+display_info('John', 25)
+
+>>> wrapper executed this before display
+... display_info ran with arguments (John, 25)
+
+```
+
+
+
+Decorator Class
+==============================================================================
+
+
+
+```
+
+def decorator_function(original_function):
+    def wrapper_function(*args, **kwargs):
+        print('wrapper executed this before{}'.format(original_function.__name__))
+        return original_function(*args, **kwargs)
+    return wrapper_function
+
+class DecoratorClass(object):
+
+    def __init__(self, original_fucntion):
+        self.original_function = original_function
+
+    def __call__(self, *args, **kwargs):
+        print('call method executed this before{}'.format(self.original_function.__name__))
+        return self.original_function(*args, **kwargs)
+
+@decorator_class
+def display():
+   print('display function ran')
+
+>>> call method executed this before display
+... display_info ran with arguments (John, 25)
+
+
+```
+
+
+##Practical Examples for decorators## 
+
++Logging 
++Timing
+
 
 Docstrings
 =============================================================================
