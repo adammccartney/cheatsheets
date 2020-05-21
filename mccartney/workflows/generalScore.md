@@ -2,11 +2,10 @@
 
  + Decide instrumentation and sketch initial idea (materials and methods)
 
- + make initial score template
-    - make instruments.definition
-    - redefine score_template class as a subclass of abjad.ScoreTemplate
 
- + write simple test for initial segment
-
-
+ + define materials.instruments.definition
+ + define tools.ScoreTemplate
+ + define tools.SegmentMaker
+ + define tools.RhythmMaker
+ + make first Segment
 
