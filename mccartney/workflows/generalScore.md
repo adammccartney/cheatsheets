@@ -6,6 +6,5 @@
  + define materials.instruments.definition
  + define tools.ScoreTemplate
  + define tools.SegmentMaker
- + define tools.RhythmMaker
- + make first Segment
+ + make Segments
 
