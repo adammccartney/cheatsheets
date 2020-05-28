@@ -185,6 +185,21 @@ and use "myclass.MyClass" and "foo.bar.yourclass.YourClass" in the module.
 * Avoid wildcard imports.
 
 
+iPython tips
+=============================================================================
+
+* Good tip for testing is to enable the autoreload function
+```
+[1] %run  "foo.py"
+[2] %load_ext autoreload
+[3] %autoreload 2
+[4] foo.f
+...42
+#[4] change foo.f 
+[5] foo.f
+...43
+```
+
 List Comprehensions
 =============================================================================
 
