@@ -59,11 +59,6 @@ before_install:
   - ls
   - echo $package
   - pwd
-  - which black-check
-  - which evans-doctest
-  - which flake8-check
-  - which isort-check
-  - which mypy
 
 script:
   - black-check $package
