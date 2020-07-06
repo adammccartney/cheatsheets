@@ -26,7 +26,7 @@ before_install:
   # install lilypond:
   - lilypond=/tmp/lilypond
   - lilypond_url=http://lilypond.org/download/binaries/linux-64/
-  - lilypond_source=lilypond-2.19.84-1.linux-64.sh
+  - lilypond_source=lilypond-2.20.0-1.linux-64.sh
   - wget -q -O $lilypond $lilypond_url/$lilypond_source
   - sh $lilypond --batch
 
@@ -38,23 +38,19 @@ before_install:
   - export PATH=$PATH:$abjad/abjad/scr
 
   # clone & install rmakers:
-  - rmakers=/tmp/abjad-ext-rmakers
-  - git clone https://github.com/Abjad/abjad-ext-rmakers.git $rmakers
-  - pip install -e $rmakers
-  - export MYPYPATH=$MYPYPATH:$rmakers
-
+  #  - rmakers=/tmp/abjad-ext-rmakers
+  #  - git clone https://github.com/Abjad/abjad-ext-rmakers.git $rmakers
+  #  - pip install -e $rmakers
+  #  - export MYPYPATH=$MYPYPATH:$rmakers
+  #
   # clone & install mccartney:
-  - mccartney=/tmp/mccartney
-  - git clone https://github.com/adammccartney/mccartney.git $mccartney
-  - export PYTHONPATH=$mccartney/:$PYTHONPATH
-  - export PATH=$mccartney/mccartney/scr/:$PATH
-  - export MYPYPATH=$MYPYPATH:$mccartney
-  - ln -s $mccartney/mccartney/dotfiles/.mypy.ini ~/.mypy.ini
-
-  # clone & install tsmakers:
-  - tsmakers=/tmp/tsmakers
-  - git clone https://github.com/ivanalexandermoscotta/tsmakers.git $tsmakers
-  - export PYTHONPATH=$tsmakers:$PYTHONPATH
+  #  - mccartney=/tmp/mccartney
+  #  - git clone https://github.com/adammccartney/mccartney.git $mccartney
+  #  - export PYTHONPATH=$mccartney/:$PYTHONPATH
+  #  - export PATH=$mccartney/mccartney/scr/:$PATH
+  #  - export MYPYPATH=$MYPYPATH:$mccartney
+  #  - ln -s $mccartney/mccartney/dotfiles/.mypy.ini ~/.mypy.ini
+  #
 
   # log setup:
   - echo $PATH

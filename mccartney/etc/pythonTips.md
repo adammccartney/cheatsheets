@@ -411,13 +411,16 @@ Don't get too clever though! see also `itertools.islice`
 # Virtual Environments
 ==============================================================================
 
-Install a virtual environment
+Install
+
+cd '~/.virtualenvs'
+`python3 -m venv %name`
 
 To add a directory to PYTHONPATH go to bin/activate and append as if in .bashrc
-`export PYTHONPATH=/home/user/directoryToFind`
+`export PYTHONPATH=/user/home/directoryToFind`
 
 # Vim pequiliarities 
 - in order to run Jupyter-Vim you need the following packages: 
-  + PyQt==5.14.0
-  + PyQt-sip==12.7.2
+  + PyQt5==5.14.0
+  + PyQt5-sip
 
