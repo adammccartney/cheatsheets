@@ -43,15 +43,15 @@ before_install:
   #  - git clone https://github.com/Abjad/abjad-ext-rmakers.git $rmakers
   #  - pip install -e $rmakers
   #  - export MYPYPATH=$MYPYPATH:$rmakers
-  #
+  
   # clone & install mccartney:
-  #  - mccartney=/tmp/mccartney
-  #  - git clone https://github.com/adammccartney/mccartney.git $mccartney
-  #  - export PYTHONPATH=$mccartney/:$PYTHONPATH
-  #  - export PATH=$mccartney/mccartney/scr/:$PATH
-  #  - export MYPYPATH=$MYPYPATH:$mccartney
-  #  - ln -s $mccartney/mccartney/dotfiles/.mypy.ini ~/.mypy.ini
-  #
+  - mccartney=/tmp/mccartney
+  - git clone https://github.com/adammccartney/mccartney.git $mccartney
+  - export PYTHONPATH=$mccartney/:$PYTHONPATH
+  - export PATH=$mccartney/mccartney/scr/:$PATH
+  - export MYPYPATH=$MYPYPATH:$mccartney
+  - ln -s $mccartney/mccartney/dotfiles/.mypy.ini ~/.mypy.ini
+
 
   # log setup:
   - echo $PATH
