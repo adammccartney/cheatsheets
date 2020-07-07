@@ -19,6 +19,7 @@ before_install:
   - pip install --upgrade pip
 
   # install testers:
+  - pip install black
   - pip install flake8
   - pip install isort
   - pip install mypy
@@ -61,9 +62,6 @@ before_install:
   - pwd
 
 script:
-  - black-check $package
-  - flake8-check $package
-  - isort-check $package
   - mypy $package
   - py.test -rf $package/test.py
 
