@@ -63,7 +63,7 @@ before_install:
 
 script:
   - mypy $package
-  - py.test -rf $package/test.py
+  - py.test -rf -k $package/test
 
 notifications:
   email: false
