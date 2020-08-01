@@ -39,10 +39,10 @@ before_install:
   - export PATH=$PATH:$abjad/abjad/scr
 
   # clone & install rmakers:
-  #  - rmakers=/tmp/abjad-ext-rmakers
-  #  - git clone https://github.com/Abjad/abjad-ext-rmakers.git $rmakers
-  #  - pip install -e $rmakers
-  #  - export MYPYPATH=$MYPYPATH:$rmakers
+    - rmakers=/tmp/abjad-ext-rmakers
+    - git clone https://github.com/Abjad/abjad-ext-rmakers.git $rmakers
+    - pip install -e $rmakers
+    - export MYPYPATH=$MYPYPATH:$rmakers
   
   # clone & install mccartney:
   - mccartney=/tmp/mccartney
