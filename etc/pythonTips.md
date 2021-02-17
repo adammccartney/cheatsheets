@@ -419,8 +419,15 @@ cd '~/.virtualenvs'
 To add a directory to PYTHONPATH go to bin/activate and append as if in .bashrc
 `export PYTHONPATH=/user/home/directoryToFind`
 
+# Using requirements
++ run venv
++ `python -m pip install -r requirements.txt
+
 # Vim pequiliarities 
 - in order to run Jupyter-Vim you need the following packages: 
   + PyQt5==5.14.0
   + PyQt5-sip
+
+
+
 
