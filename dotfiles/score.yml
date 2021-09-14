@@ -1,0 +1,69 @@
+
+os: linux
+
+dist: buster
+
+language: python
+
+python:
+  - 3.7
+  - 3.8
+
+before_install:
+  # alias package:
+  - name=`basename $TRAVIS_BUILD_DIR`
+  - package=$TRAVIS_BUILD_DIR/$name
+  - export PYTHONPATH=$package:$PYTHONPATH
+
+  # upgrade pip:
+  - pip install --upgrade pip
+
+  # install testers:
+  - pip install black
+  - pip install flake8
+  - pip install isort
+  - pip install mypy
+
+  # install lilypond:
+  - lilypond=/tmp/lilypond
+  - lilypond_url=http://lilypond.org/download/binaries/linux-64/
+  - lilypond_source=lilypond-2.20.0-1.linux-64.sh
+  - wget -q -O $lilypond $lilypond_url/$lilypond_source
+  - sh $lilypond --batch
+
+  # clone & install abjad:
+  - abjad=/tmp/abjad
+  - git clone -b master https://github.com/Abjad/abjad.git $abjad
+  - pip install -e $abjad
+  - export MYPYPATH=$abjad
+  - export PATH=$PATH:$abjad/abjad/scr
+
+  # clone & install rmakers:
+    - rmakers=/tmp/abjad-ext-rmakers
+    - git clone https://github.com/Abjad/abjad-ext-rmakers.git $rmakers
+    - pip install -e $rmakers
+    - export MYPYPATH=$MYPYPATH:$rmakers
+  
+  # clone & install mccartney:
+  - mccartney=/tmp/mccartney
+  - git clone https://github.com/adammccartney/mccartney.git $mccartney
+  - export PYTHONPATH=$mccartney/:$PYTHONPATH
+  - export PATH=$mccartney/mccartney/scr/:$PATH
+  - export MYPYPATH=$MYPYPATH:$mccartney
+  - ln -s $mccartney/mccartney/dotfiles/.mypy.ini ~/.mypy.ini
+
+
+  # log setup:
+  - echo $PATH
+  - echo $PYTHONPATH
+  - echo $TRAVIS_BUILD_DIR
+  - ls
+  - echo $package
+  - pwd
+
+script:
+  - mypy $package
+  - pytest -rf -v $package/test
+
+notifications:
+  email: false

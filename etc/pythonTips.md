@@ -429,5 +429,19 @@ To add a directory to PYTHONPATH go to bin/activate and append as if in .bashrc
   + PyQt5-sip
 
 
+## Using pipenv to manage virtualenvs
+
+```
+mkdir ~/<somewhere>/django
+cd django 
+
+pipenv install django~=3.1.0
+```
+
+To activate the environment: `pipenv shell`
+
+`(django) $ django-admin startproject config .`
+
+
 
 
