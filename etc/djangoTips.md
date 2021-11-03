@@ -294,3 +294,8 @@ See examples for code!
 ## Ideal times to write tests
 + before you right any code (TDD)
 + right after you've added new functionality and it's clear in your mind 
+
+
+# Debugging
+
+## Debug app settings
