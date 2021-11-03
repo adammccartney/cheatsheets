@@ -9,8 +9,6 @@ New style of async code that gets used in modern Web APIs. e.g.: `fetch()`
 Modern, more efficient version of `XMLHttpRequest`
 
 
-
-
 # Call stacks and hoisting
 
 Be aware of the execution order that JavaScript implements by default. 
