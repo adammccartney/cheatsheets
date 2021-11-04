@@ -1,3 +1,0 @@
-version: ~> 1.0
-
-import: adammccartney/mccartney:mccartney/dotfiles/score.yml
