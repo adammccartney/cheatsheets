@@ -1,6 +1,6 @@
 # Postgres cheat sheet
 
-## Running hand-compiled on Debian/Ubuntu
+## Source compiled on Debian/Ubuntu
 
 The hand-compiled versions on on debian will try to set the Unix socket as
 `/var/run/postgresql`, this conflicts with the settings created by the
@@ -57,6 +57,10 @@ Check if the permissions are the same as they were with dumped db
 ```
 psql> SELECT * FROM pg_roles;
 ```
+
+Add a password: 
+
+psql> 
 
 ### Restore Backup
 ```
