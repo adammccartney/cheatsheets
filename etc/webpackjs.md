@@ -98,3 +98,30 @@ clever model whereby you declare the dependency graph explicitly in the `entry`
 property of the config. There is a plugin called 'SplitChunksPlugin' that
 allows us to extract common dependencies into an existing entry chunk or an
 entirely new chunk.
+
+### Dynamic Imports
+
+The use of async functions is common in modern webpack usage.
+
+An [anylyzer tool][] is very useful for seeing just how modules have been
+organized.
+
+[analyzer tool](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+
+### Lazy Loading 
+
+The practice of loading modules i.e. chunks as they are required is a very
+common pattern when working with frameworks. There are a number of good
+articles around [lazy loading with vue][]
+
+
+[lazy loading with vue](https://vuedose.tips/dynamic-imports-in-vue-js-for-better-performance) 
+
+
+## Caching
+
+This seems to be particulary useful when loading modules whose content will not
+change very regularly (like frameworks). These workflows in and around loading
+code chunks in the browser are very reminiscent of the types of procedures that
+get implemented when designing a virtual machine. 
+

@@ -77,3 +77,29 @@ make a symbolic link to volume mount
 start the container
 `docker-compose up -d`
 
+
+
+Build Args
+==========
+
+## Out of source builds
+Sometimes it is useful to be able to pass the Dockerfile as an arg on the
+command line. 
+
+```
+docker build -f ./docker/Dockerfile -t mytag:latest
+```
+
+## Package managers who expect DNS
+If you're trying to install packages from pypi, you'll need to make sure there
+is adequate DNS resolution happening. For this to be the case, the container
+needs to have an IP that is visible to external services. In some cases when
+there is an external build tool involved, docker-compose or gitlab runner, this
+seems to happen automatically. The builder seems to wrap the image in a network
+context. Othertimes, you will need to explicitly pass a network flag when
+running the build command.
+```
+docker build --network host -f ./docker/Dockerfile -t mytag:latest
+```
+
+
