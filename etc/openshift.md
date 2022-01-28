@@ -39,3 +39,7 @@ The application needs to be exposed manually (unlike the web console)
 
 To get the url, run:
 `oc get route/blog-django-py`
+
+
+## configure http route
+https://docs.openshift.com/container-platform/4.9/networking/routes/route-configuration.html#nw-path-based-routes_route-configuration
