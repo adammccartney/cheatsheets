@@ -53,3 +53,14 @@ using make:
 
 This error log can be opened using the -q flag:
 `vim -q error.log`
+
+
+# Migration from pathogen to vim-plug
+
+1. Install vimplug
+2. change vimrc file 
+```
+call plug#begin('~/.vim/plugged')
+Plug <link to plugin git>
+class plug#end()
+```

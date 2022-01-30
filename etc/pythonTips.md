@@ -1,4 +1,4 @@
-# pythonTips.md
+pythonTips.md
 --------------
 
 + Always feed python live mice
@@ -408,7 +408,7 @@ arpIIMi = scale[1::2]
 Don't get too clever though! see also `itertools.islice`
 
 
-# Virtual Environments
+Virtual Environments
 ==============================================================================
 
 Install
@@ -441,7 +441,5 @@ pipenv install django~=3.1.0
 To activate the environment: `pipenv shell`
 
 `(django) $ django-admin startproject config .`
-
-
 
 

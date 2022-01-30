@@ -119,4 +119,6 @@ After this merge you can delete the issXY branch.
 + if a similar issue was worked on in two different branches and the same code
   region was changed, then git won't be able to merge the branches cleanly. 
 
-   
+## Some smart commands for viewing logs
+
+`git log --oneline --graph`
