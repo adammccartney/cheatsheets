@@ -64,3 +64,7 @@ call plug#begin('~/.vim/plugged')
 Plug <link to plugin git>
 class plug#end()
 ```
+
+## Reflow a text 
+
+Select a block of text visually and invoke `gq`
