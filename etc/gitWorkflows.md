@@ -122,3 +122,8 @@ After this merge you can delete the issXY branch.
 ## Some smart commands for viewing logs
 
 `git log --oneline --graph`
+
+
+## Redact info (remove a file from histroy)
+
+Check out git-filter-repo

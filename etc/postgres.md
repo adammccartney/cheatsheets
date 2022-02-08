@@ -66,3 +66,20 @@ psql>
 ```
 pg_restore -x --no-privileges --if-exists -1 -c -U postgres -d scheitportal /home/adam/scheit_backup_4-10-21
 ```
+
+##
+
+SELECT * from django_migrations;
+
+## Alter Role permissions
+```
+CREATE ROLE user_name PASSWORD 'pass' NOSUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;
+
+ALTER USER tester CREATEDB CREATEROLE LOGIN;
+
+ALTER DATABASE test_db OWNER TO tester
+
+DELETE FROM django_migrations WHERE id = 28
+```
+
+SELECT pg_catalog.setval('mdwuser_customuser_id_seq', 3, false);
