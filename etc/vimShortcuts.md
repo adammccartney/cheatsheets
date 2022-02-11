@@ -68,3 +68,11 @@ class plug#end()
 ## Reflow a text 
 
 Select a block of text visually and invoke `gq`
+
+
+## Jump to closing tag (html)
+
++ enter visual mode
++ select outer tag block `a t`, or inner tag block `i t`
+
+`:help visual-operators`

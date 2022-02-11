@@ -43,3 +43,5 @@ To get the url, run:
 
 ## configure http route
 https://docs.openshift.com/container-platform/4.9/networking/routes/route-configuration.html#nw-path-based-routes_route-configuration
+
+
