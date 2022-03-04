@@ -127,3 +127,11 @@ After this merge you can delete the issXY branch.
 ## Redact info (remove a file from histroy)
 
 Check out git-filter-repo
+
+
+
+## Tags
+
+Delete a tag locally with `git tag -d <tagname>`
+
+Delete a tag remotely `git push -d origin <tagname>` 
