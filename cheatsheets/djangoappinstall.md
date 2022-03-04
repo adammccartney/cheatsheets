@@ -169,10 +169,14 @@ patch -s -p0 < patchfile.patch
 ## Creating an automated deployment pipeline for releases
 
 As mentioned at the outset, we want to leverage CI pipelines to automate some
-of these steps. We have a real live chaos monkey in house who hacks on the
-django-base project without any discernable rhyme or reason, so we want to make
-the process of releasing changes into downstream apps as reasonable and easy to
-follow as possible. My initial approach for doing this is to release tagged
+of these steps. It's not uncommon or unheard of for web applications to be
+written and deployed under very tight time constraints. The people that end up
+writing them can often be stretched really thin and not have the resources at
+their disposal to come up with super clean lines in terms of how the project is
+designed and implemented. It's nice to imagine that we all would architect
+projects like a modern day Palladio.
+
+My initial approach for doing this is to release tagged
 versions of our base package. To release an installable component, we're going
 to leverage the gitlab CI pipeline and gitlab API to pull what would amount to
 our example project from the upstream repo at the versio number that we want,
