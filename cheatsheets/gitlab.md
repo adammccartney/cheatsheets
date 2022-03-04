@@ -12,4 +12,8 @@ sudo docker exec -it <container> grep 'Password:' /etc/gitlab/initial_root_passw
 ```
 
 
+## Delete a release using the API
+`curl --header "PRIVATE-TOKEN: <private-token>"
+"https://gitlab.somewhere/api/v4/projects/412312371823/releases/v0.0.6"`
+
 
