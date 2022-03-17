@@ -76,3 +76,10 @@ Select a block of text visually and invoke `gq`
 + select outer tag block `a t`, or inner tag block `i t`
 
 `:help visual-operators`
+
+
+## Open a number of files in tabs
+
+```
+vim -p `find . -type f -name <filename>`
+```
