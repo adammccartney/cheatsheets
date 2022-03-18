@@ -102,3 +102,5 @@ running the build command.
 ```
 docker build --network host -f ./docker/Dockerfile -t mytag:latest
 ```
+
+A dockerfile with nothing is no docker file.
