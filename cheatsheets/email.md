@@ -16,5 +16,3 @@ gets you as far as `enter STARTTLS` request.
 
 Found one alternative on stack overflow:
 `openssl s_client -starttls smtp -crlf -connect <server>:25`
-
-When I don't have anything to say in an email, then I should say nothing.
