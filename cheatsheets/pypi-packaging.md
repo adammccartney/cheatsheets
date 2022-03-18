@@ -1,16 +1,16 @@
 # some notes on packaging python project
 
 ## pyproject.toml PEP 518
+
 pythons built in minimum build requirements shtick
 
 The jist is that it is possible to specifiy dependencies for a project
 explicitly in a toml config file. The dependencies have a specific format, as
-outlined in PEP 508. 
-
+outlined in PEP 508.
 
 ### PEP 508
 
-complete grammar: 
+complete grammar:
 
 ```
 wsp           = ' ' | '\t'
@@ -120,6 +120,7 @@ hexdig        = digit | 'a' | 'A' | 'b' | 'B' | 'c' | 'C' | 'd' | 'D' | 'e' | 'E
 ```
 
 test program:
+
 ```
 import os
 import sys
@@ -185,15 +186,14 @@ for test in tests:
     print("%s -> %s" % (test, parsed))
 ```
 
-
 ## Django
 
 https://realpython.com/installable-django-app/
 
-
 Useful line at the end about versioning:
+
 ```
-I often use a small shell script to grep the version number from the code. 
-Then I call git tag to tag the repo with the version number, remove the old 
+I often use a small shell script to grep the version number from the code.
+Then I call git tag to tag the repo with the version number, remove the old
 build/ and dist/ directories, and call the above three commands.
 ```

@@ -4,14 +4,13 @@ Python has some really great features in and around decorators. At first glance
 they appear to be somehow superfluous type of syntactic sugar or something
 along those lines. This is not the case.
 
-There are a number of great use cases for decorators: 
+There are a number of great use cases for decorators:
 
-+ tidier class interfaces with better encapsulation
-+ any sort of measurement, whether of time or space complexity
+- tidier class interfaces with better encapsulation
+- any sort of measurement, whether of time or space complexity
   space complexity refers to the number of calls that a recursive
   routine or loop will make. Wheras time complexity refers to the speed that
   these calls (or the routine as a whole) will take to complete.
-
 
 ## Measurement Tools
 

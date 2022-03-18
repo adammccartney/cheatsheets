@@ -1,6 +1,4 @@
-Linux container secutiry
-========================
-
+# Linux container secutiry
 
 ## Capabilities
 
@@ -16,12 +14,10 @@ There are 3 high level options for using capabilites:
 
 Option 2 is the most reaslistic.
 
-
 ## Example:
 
-Docker omits the CAP_ prefix when managing capabilities
+Docker omits the CAP\_ prefix when managing capabilities
 
 ```
 docker run --rm -it --cap-drop ALL --cap-add CHOWN alpine chown nobody /
 ```
-

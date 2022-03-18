@@ -1,50 +1,48 @@
-Working with webpack
-===============================================================================
+# Working with webpack
 
 This document contains personal notes taken while reading through the excellent
 [webpack online docs][]
 
 Generally, I've been trying to use the vue cli to get up and running with vue
 projects. For a beginner, this tool seems way too heavyweight. Also some of the
-more experienced devs at work are using webpack to structure their projects. 
+more experienced devs at work are using webpack to structure their projects.
 
 Webpack seems to enable a little more light weight package management, enabling
 developers to organize their projects in a more modular way. The typical
 workflow goes a bit like this:
 
-+ create project directory and install webpack
+- create project directory and install webpack
+
 ```
 mkdir myproject
 cd myproject
 npm install webpack webpack-cli --save-dev
 ```
 
+Set up basic directory structure
 
-Set up basic directory structure 
 ```
 mkdir dist/ src/
-touch dist/index.html src/index.js 
+touch dist/index.html src/index.js
 ```
 
-From this point, the project can be built using the `npx webpack` command. 
+From this point, the project can be built using the `npx webpack` command.
 Generally though, we follow the steps of setting up a webpack.config.json
 
 [webpack online docs](https://webpack.js.org/guides)
 
-## Webpack config js 
+## Webpack config js
 
 This is actually quite a useful little tool in terms of building. At the very
 least, it provides devs with a place to specify the resources needed to build
 the project. In some cases the resources will be in the style of build
 patterns: source-target paris for transpiling the main javascript application.
-Also any modules that will be packaged are specified in the config. 
+Also any modules that will be packaged are specified in the config.
 
-
-## Output management 
+## Output management
 
 A very useful plugin for handling the actual compile targets of the javascript
 code that you are writing is 'HtmlWebpackPlugin'
-
 
 ## Development
 
@@ -77,7 +75,7 @@ Nevertheless, there are a lot of really great and clear explanations and
 excursions into the world of the bytecode interpreter in which javascript is
 run [to be found][]
 While your caching up on gutsy details of the lanugage, there are also a bunch
-of super useful development tools available in webpack. 
+of super useful development tools available in webpack.
 
 [to be found](https://mathiasbynens.be/notes/shapes-ics)
 
@@ -86,9 +84,8 @@ of super useful development tools available in webpack.
 Okay, so for debugging it's probably enough to get rolling with the
 'inline-source-map' option provided by webpack.
 
-It might be useful to investigate webpack-watch also, this may provide 
-GNU-make like functionality i.e. compiles only what has changed on build. 
-
+It might be useful to investigate webpack-watch also, this may provide
+GNU-make like functionality i.e. compiles only what has changed on build.
 
 ## Code Splitting
 
@@ -108,20 +105,17 @@ organized.
 
 [analyzer tool](https://github.com/webpack-contrib/webpack-bundle-analyzer)
 
-### Lazy Loading 
+### Lazy Loading
 
 The practice of loading modules i.e. chunks as they are required is a very
 common pattern when working with frameworks. There are a number of good
 articles around [lazy loading with vue][]
 
-
-[lazy loading with vue](https://vuedose.tips/dynamic-imports-in-vue-js-for-better-performance) 
-
+[lazy loading with vue](https://vuedose.tips/dynamic-imports-in-vue-js-for-better-performance)
 
 ## Caching
 
 This seems to be particulary useful when loading modules whose content will not
 change very regularly (like frameworks). These workflows in and around loading
 code chunks in the browser are very reminiscent of the types of procedures that
-get implemented when designing a virtual machine. 
-
+get implemented when designing a virtual machine.

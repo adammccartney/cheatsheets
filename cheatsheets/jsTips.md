@@ -1,5 +1,4 @@
-JavaScript tips and tricks
-==========================
+# JavaScript tips and tricks
 
 # asynchronous JS
 
@@ -8,16 +7,15 @@ JavaScript tips and tricks
 New style of async code that gets used in modern Web APIs. e.g.: `fetch()`
 Modern, more efficient version of `XMLHttpRequest`
 
-
 # Call stacks and hoisting
 
-Be aware of the execution order that JavaScript implements by default. 
-It's non-sequential. 
-
+Be aware of the execution order that JavaScript implements by default.
+It's non-sequential.
 
 # Functional style
 
-Consider: 
+Consider:
+
 ```
 const max = function(...values) {
     console.log (values instanceof Array);
@@ -36,11 +34,10 @@ const max = function(...values) {
 
 ```
 
-vs. 
+vs.
 
 ```
 const mmax = function(...values) {
     return values.reduce((large, e) => large > e ? large : e, values[0]);
 };
 ```
-

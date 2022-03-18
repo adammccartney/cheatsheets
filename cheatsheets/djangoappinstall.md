@@ -3,7 +3,7 @@
 ```
 Stand, stand at the window
   As the tears scald and start;
-You shall love your crooked neighbor 
+You shall love your crooked neighbor
   With your crooked heart.
                          - W.H. Auden, Another Time
 ```
@@ -11,9 +11,9 @@ You shall love your crooked neighbor
 Faced with the task of coordinating the package managment for a very messy
 django project, there is a case where I need to copy changes being pushed into
 a demo project to what is basically a very similar project that is used for
-testing our individual apps before releasing tagged versions. 
+testing our individual apps before releasing tagged versions.
 
-## Existing methods 
+## Existing methods
 
 There is a really good article on how to write [installable django apps](https://realpython.com/installable-django-app/)
 over on real python. Much of the info here was of a great help. Unfortunately,
@@ -37,7 +37,7 @@ going to try is to leverage Git and Gitlab to create a release pipeline for the
 packages. The upstream package is still going to be the `django-base` app,
 where we will test out all our components, add new features etc. We then want
 to create a tagged release that we can track from the repositories where our
-subcomponents live. 
+subcomponents live.
 
 ```
 example of django app with subcomponents
@@ -77,7 +77,7 @@ project. That is we don't really develop it as an upstream package and then
 install it when we have the features that we want. Instead, we add the features
 incrementally using an `example_project`. As the article above suggests, it's
 no harm to include the sample project in the directory of the django app that
-you wish to make installable.  It's worth pointing out that in this case, the 
+you wish to make installable. It's worth pointing out that in this case, the
 
 ```
 example of subcomponent package
@@ -100,8 +100,8 @@ example of subcomponent package
 
 ```
 
-When it has all the features that you want, you can simply move the component out 
-of the `example_project` into the parent directory for packaging. 
+When it has all the features that you want, you can simply move the component out
+of the `example_project` into the parent directory for packaging.
 
 ```
 .
@@ -121,7 +121,6 @@ of the `example_project` into the parent directory for packaging.
 └── setup.py
 ```
 
-
 ## Keeping things up-to-date (thank god for unix)
 
 One of the challenges with the wrangling that is going on here is that there is
@@ -140,31 +139,35 @@ Programming](https://archive.org/details/ost-computer-science-the_art_of_unix_pr
 Anyway, `patch` lets you ... well, patch a file with new changes. Presumably
 this is also how git merge is working.
 
-### Patching files 
+### Patching files
 
 1. Create a patchfile by diffing the two files and piping the output to a
    patchfile
+
 ```
 diff -u file1 file2 > patchfile.patch
 ```
 
-2. Apply the patch 
+2. Apply the patch
+
 ```
 patch file1 patchfile.patch
 ```
 
 ### Patching directories
+
 1. Create a patchfile by running diff on the two directories and piping the
-   output to a patchfile 
+   output to a patchfile
+
 ```
 diff -ruN folder1/ folder2/ > patchfile.patch
 ```
 
-2. Apply the patch  
+2. Apply the patch
+
 ```
 patch -s -p0 < patchfile.patch
 ```
-
 
 ## Creating an automated deployment pipeline for releases
 
@@ -186,4 +189,4 @@ our pypi package registry.
 [Creating a release job](https://docs.gitlab.com/ee/user/project/releases/#create-a-release-by-using-a-cicd-job)
 is well documented in the gitlab docs. It's fairly trivial to set up the
 django-base repository to create a release each time we push a tag to remote
-origin.  
+origin.

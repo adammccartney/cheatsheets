@@ -1,6 +1,5 @@
 # os hacking
 
-
 ## Simple build and test with KVM
 
 ```
@@ -17,6 +16,7 @@ cd ../../..
 ```
 
 # Create a disk for the VM
+
 ```
 ./qemu-img create -f qcow2 test.qcow2 16G
 # Download an install ISO - I have Fedora 20
@@ -35,6 +35,7 @@ ls -la ~/Images/ubuntu-20.04.2.0-desktop-amd64.iso
 ```
 
 # Run QEMU with KVM enabled (w/o VNC):
+
 ```
 x86_64-softmmu/qemu-system-x86_64 -m 1024 -enable-kvm \
 -drive if=virtio,file=test.qcow2,cache=none \
