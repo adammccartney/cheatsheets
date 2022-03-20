@@ -1,5 +1,4 @@
-Some notes on headless browsing with puppeteer
-==============================================
+# Some notes on headless browsing with puppeteer
 
 # Set up for debug
 

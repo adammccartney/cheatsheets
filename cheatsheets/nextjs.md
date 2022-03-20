@@ -1,19 +1,15 @@
-designing simple sites with nextjs
-===================================
-
+# designing simple sites with nextjs
 
 to fire up a site:
 
 `npx create-next-app@latest`
-
 
 ## Typically design pattern
 
 1. create component
 2. Load component into layout
 
-
-# Styling 
+# Styling
 
 ## Using bootstrap
 

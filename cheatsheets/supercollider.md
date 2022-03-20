@@ -3,10 +3,9 @@
 Patterns define behavior; streams execute it
 
 Patterns are the basic layout of a musical piece, we write streams to exectute
-on the plan / score described by the patterns. 
+on the plan / score described by the patterns.
 
 **Patterns are stateless**
-
 
 ```
 a = Pseries(start: 0, step: 1, length: inf).asStream;
@@ -23,77 +22,130 @@ b.next; // continues from where it was before
 [b.next, c.next];
 ```
 
-## Primary Patterns 
+## Primary Patterns
 
 ### Pseq(list, repeats, offset)
+
     Play through the entire list repeats times. Like list.do.
+
 ### Prand(list, repeats)
+
     Choose items from the list randomly (same as list.choose).
+
 ### Pxrand(list, repeats)
+
     Choose randomly, but never repeat the same item twice in immediate succession.
+
 ### Pshuf(list, repeats)
+
     Shuffle the list in random order, and use the same random order repeats times. Like list.scramble.
+
 ### Pwrand(list, weights, repeats)
+
     Choose randomly, according to weighted probabilities (same as list.wchoose(weights)).
+
 ### Pseries(start, step, length)
+
     Arithmetic series (addition).
+
 ### Pgeom(start, grow, length)
+
     Geometric series (multiplication).
+
 ### Pwhite(lo, hi, length)
+
     Random numbers, equal distribution ("white noise"). Like rrand(lo, hi) .
+
 ### Pexprand(lo, hi, length)
+
     Random numbers, exponential distribution. Like exprand(lo, hi) .
+
 ### Pbrown(lo, hi, step, length)
+
     Brownian motion, arithmetic scale (addition).
+
 ### Pfunc(nextFunc, resetFunc)
+
     Get the stream values from a user-supplied function.
+
 ### Pfuncn(func, repeats)
+
     Get values from the function, but stop after repeats items.
+
 ### Prout(routineFunc)
+
     Use the function like a routine. The function should return values using .yield or .embedInStream.
 
 ## Additional List Patterns
 
 ### Pser(list, repeats, offset)
+
     Play through the list as many times as needed, but output only repeats items.
+
 ### Pslide(list, repeats, len, step, start, wrapAtEnd)
+
     Play overlapping segments from the list.
+
 ### Pwalk(list, stepPattern, directionPattern, startPos)
+
     Random walk over the list.
+
 ### Place(list, repeats, offset)
+
     Interlace any arrays found in the main list.
+
 ### Ppatlace(list, repeats, offset)
+
     Interlace any patterns found in the main list.
+
 ### Ptuple(list, repeats)
+
     Collect the list items into an array as the return value.
 
 ## Additional Random Number Generators
 
 ### Pgbrown(lo, hi, step, length)
+
     Brownian motion, geometric scale (multiplication).
+
 ### Pbeta(lo, hi, prob1, prob2, length)
+
     Beta distribution, where prob1 = α (alpha) and prob2 = β (beta).
+
 ### Pcauchy(mean, spread, length)
+
     Cauchy distribution.
+
 ### Pgauss(mean, dev, length)
+
     Guassian (normal) distribution.
+
 ### Phprand(lo, hi, length)
+
     Returns the greater of two equal-distribution random numbers.
+
 ### Plprand(lo, hi, length)
+
     Returns the lesser of two equal-distribution random numbers.
+
 ### Pmeanrand(lo, hi, length)
+
     Returns the average of two equal-distribution random numbers, i.e., (x + y) / 2.
+
 ### Ppoisson(mean, length)
+
     Poisson distribution.
+
 ### Pprob(distribution, lo, hi, length, tableSize)
+
     Arbitrary distribution, based on a probability table.
 
-## Simple sequential and random patterns 
+## Simple sequential and random patterns
 
 `Pseq` and `Pser` can be used to create sequential patterns that move along
 linearly. The thing to note is that Pbind takes a number of tuples as
-arguments, in the format *\function, Values* where values can be a single value
-or a list of value arguments. 
+arguments, in the format _\function, Values_ where values can be a single value
+or a list of value arguments.
 
 ```
 // Flock of Seagulls!
@@ -171,7 +223,6 @@ Furthermore: dictionaries in Supercollider are unordered patterns, even though
 Pbind processes its child streams in the order given, the results can display
 the keys and values in any order.
 
-
 ### Events to control SynthDef
 
 most SynthDefs have control inputs that are possible to control using events
@@ -215,6 +266,8 @@ p.stop;
 ```
 
 ### Argument name prefixes
+
 Initial arguments to synth defs are specified as follows:
-+ t_ trigger event
-+ i_ initial rate
+
+- t\_ trigger event
+- i\_ initial rate

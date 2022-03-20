@@ -1,49 +1,44 @@
-
-Notes from the art of unix programming 
-======================================
+# Notes from the art of unix programming
 
 Seperate out a programs parts and connect them using a simple command stream or
 application protocol.
 
-Design for simplicity not for ornateness or complexity. 
+Design for simplicity not for ornateness or complexity.
 
+# use unix as ide
 
+# editing
 
-use unix as ide
-===============
-
-editing
-=======
-
-+ created a little script for running ctags on a source directory
-located at [[~/bin/maketags]]
+- created a little script for running ctags on a source directory
+  located at [[~/bin/maketags]]
 
 Once the tags file is created, open vim in the root directory of the project
 and use the commands `:tag /class/` to visit source listings. use `:tn | :tp`
 to move forward or backward
 
-# linting 
+# linting
 
 gcc: it's possible to compile the program and cache the errors to an error.log
 `g++ example.c -o example > error.log > 2&1`
 
-error log can be opened in vim: 
+error log can be opened in vim:
 `vim -q error.log`
 
+## vim QuickFix
 
-## vim  QuickFix
-global list 
+global list
 
-*Almost* too lazy to read the docs. This tool/workflow is based around using
+_Almost_ too lazy to read the docs. This tool/workflow is based around using
 vimgrep to generate a list of search results
 
 ```
-:vimgrep /^\#include/j ./*.c 
+:vimgrep /^\#include/j ./*.c
 ```
+
 This command allows you to jump to results that are found anywhere in the
 directories specified in the grep search path
 
-The results of this search are safed to the quickfix buffer, which you can 
+The results of this search are safed to the quickfix buffer, which you can
 view in the quickfix window by running `:copen` and close again with `:cclose`.
 
 To view what particular search is currently being viewed, run `:chistory`
@@ -51,19 +46,15 @@ To view what particular search is currently being viewed, run `:chistory`
 The easiest way to cycle through history (meaning error lists) seems to be to
 use `cnew[er]` `cold[er]`
 
-
 ### Location list
+
 local list
-Similar to quickfix lists, but it's possible to have multiple location  lists
-open at once. 
+Similar to quickfix lists, but it's possible to have multiple location lists
+open at once.
 
+# Compiling
 
-
-Compiling
-=========
-
-# generating assembler output 
-
+# generating assembler output
 
 `$ objdump -D example.o`
 
@@ -71,17 +62,15 @@ or
 
 `$ gcc -c -S example.c -o example.s`
 
+_there is a way to generate assembler output alongside c code_
 
-*there is a way to generate assembler output alongside c code*
-
-Building
-========
+# Building
 
 # makefiles
 
-Either all objects can be specified 
+Either all objects can be specified
 
-``` 
+```
 all: example
 
 example: main.o example.o library.o
@@ -101,12 +90,12 @@ clean:
 
 install: example
     cp example /usr/bin
-``` 
+```
 
-Or a more generic structure can be used 
+Or a more generic structure can be used
 
 ```
- 
+
 CC = gcc
 OBJECTS = main.o example.o library.o
 BINARY = example
@@ -121,10 +110,9 @@ clean:
 
 install: example
     cp $(BINARY) /usr/bin
-``` 
+```
 
-debugging
-=========
+# debugging
 
 gdb can be run from within emacs in a way that looks really like a modern ide
 
@@ -136,7 +124,6 @@ run it like this:
 
 once in the gdb session, run as normal...
 
-
 ```
 (gdb) run
 
@@ -144,15 +131,16 @@ once in the gdb session, run as normal...
 ...
 #if error
 
-(gdb) backtrace 
+(gdb) backtrace
 
 
 #then use
-(gdb) step 
+(gdb) step
 
 ```
 
 Can even be used on a program that is running:
+
 ```
 $ pgrep example
 1524
@@ -160,6 +148,7 @@ $ gdb -p 1524
 ```
 
 # Valgrind
+
 a newer debugging tool see "learn c the hard way" for more info
 
 # ltrace
@@ -171,7 +160,7 @@ linkage problems. here's how to use it with an output file:
 
 `$ ltrace -o example.ltrace ./example`
 
-# track open files with lsof 
+# track open files with lsof
 
 ```
 $ pgrep example

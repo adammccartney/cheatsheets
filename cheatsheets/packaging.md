@@ -1,29 +1,32 @@
 # Workflow for Score Packages
--------------------------------------------------------------------------------
 
-Create two eponymous directories. 
- + Top level is wrapper 
- + Bottom level is contents
+---
 
+Create two eponymous directories.
+
+- Top level is wrapper
+- Bottom level is contents
 
 # wrapper
- + `reamde.md`
- + `setup.py`
- + `.travis.yml`
- + `test.py`
- + `.gitignore`
- + `./contents`
+
+- `reamde.md`
+- `setup.py`
+- `.travis.yml`
+- `test.py`
+- `.gitignore`
+- `./contents`
 
 # contents
 
-Give minimal overview of contents. 
+Give minimal overview of contents.
+
 ```
     ./builds                # Contains tex built score
 
     ./distribution
     |_ finishedTypesetScore.pdf
 
-    ./etc                   # misc files 
+    ./etc                   # misc files
 
     ./materials             # Contains materials used to build segments
     |_ __init__.py
@@ -33,8 +36,8 @@ Give minimal overview of contents.
       |_./instrumentX-pitches
       | |_ __init__.py
         |_ definition.py
-   
-    ./segments             # Contains all score segments 
+
+    ./segments             # Contains all score segments
     |_ __init__.py
     | |_ ./A
       | |_ __init__.py
@@ -47,18 +50,19 @@ Give minimal overview of contents.
 
     ./stylesheets           # lilypond stylesheets
 
-    ./test                  # tools for testing 
+    ./test                  # tools for testing
       ?
 
     ./tools                 # Contains tools to build segments out of materials
     |_ __init__.py
     |_ SegmentMaker.py
-    |_ RhythmDefinition.py 
+    |_ RhythmDefinition.py
     |_ ScoreTemplate.py
 
 ```
 
 # Installing or adding to PYTHONPATH
+
 ==============================================================================
 
 Possible to install package using `setup.py` file, but as we are usually
@@ -69,4 +73,3 @@ following command in the `.bashrc`
 ```
 export PYTHONPATH=/home/user/newpackage1:/home/user/newpackage2
 ```
-

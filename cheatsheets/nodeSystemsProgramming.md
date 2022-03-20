@@ -1,10 +1,8 @@
-Heading towards an understanding of asynchronous routines
-=========================================================
+# Heading towards an understanding of asynchronous routines
 
 node has a lot of inbuilt functionality for managing standard unix style
 systems programming tasks. In other words, the api for managing various tasks
-like spawning child processes. 
-
+like spawning child processes.
 
 # Event emitters and err callback arguments
 
@@ -12,14 +10,12 @@ The big thing to remember with asynchronous programing in node is that
 asynchronous functions are basically a way of instantiating future events. In
 other words, by writing an async function, you are basically saying that this
 resulting exeucutiong of the following procedure will happen at some time in
-the future.  
-
+the future.
 
 # It seems easy to forget to introduce elements of timing to programs
 
 In other words, one issue that I seem to be running into is this idea of a
 seemingly frozen process...
-
 
 Consider the following code, it sets up a child process resonably successfully,
 and it will watch the file whose name is passed in as an arg on the command
@@ -27,7 +23,6 @@ line. There is nothing inside the fs.open to detect the file being deleted.
 That is, you can set this program running in the environment and then delete
 the file that it is watching. The deletion has no noticeable effects on the
 process, it just continues to watch the now non-existant file.
-
 
 ```
 'use strict';

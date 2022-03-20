@@ -1,11 +1,10 @@
-some notes on gitops tools with openshift
-=========================================
+# some notes on gitops tools with openshift
 
 # Argo CD
 
 You can set up various code and infrastructure repositories in git, then simply
 give the git url when creating a new app with argo cd. Argo will do the rest
-... i.e. it carries out the deployment specified in the repo. 
+... i.e. it carries out the deployment specified in the repo.
 
 ## argocd url
 
@@ -59,9 +58,6 @@ give the git url when creating a new app with argo cd. Argo will do the rest
 
 ```
 
-
-
-
 # Kustomize
 
 As mentioned on the website, kustomize is a tool whose functionality is
@@ -79,23 +75,20 @@ Dev ---->  Gitlab  <------- Ops
           OpenShift
 ```
 
-
 Overview of a kustomize file,
 [Kustomize API](https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/)
 
-
-Kustomize generally works with *base* templates and *overlays*. 
-
+Kustomize generally works with _base_ templates and _overlays_.
 
 ## Patches
 
 Generally speaking, we are often using generators (which are interfaces) to
 generate patches for existing yaml files. All of this is done through yaml
-files called **overlays**. 
+files called **overlays**.
 
 Typical workflow is to define placeholders called `pathcme` in the base yaml
 that needs to be patched. The overlay then describes in yaml format the type of
-generator that is to be created. Basically a trio of: 
+generator that is to be created. Basically a trio of:
 
 ```
 op: ...
@@ -130,12 +123,10 @@ kustomize build /path/to/overlay | oc apply -f -
     └── README.md
 ```
 
-
-
 # Typical workflows
 
 There seems to be a pattern that recurs frequenctly enough, that is to run some
-command using `oc` and to save the output to a yaml file. 
+command using `oc` and to save the output to a yaml file.
 
 ```
 oc adm policy add rolebinding ...
