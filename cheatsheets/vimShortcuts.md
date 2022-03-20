@@ -76,3 +76,16 @@ Select a block of text visually and invoke `gq`
 + select outer tag block `a t`, or inner tag block `i t`
 
 `:help visual-operators`
+
+
+## Search and replace across multiple buffers
+
+```
+:bufdo %s/rhythm/petunias/gce
+```
+
+then 
+
+```
+:bufdo wq!
+```
