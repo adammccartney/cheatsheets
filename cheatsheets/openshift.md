@@ -38,3 +38,69 @@ To get the url, run:
 ## configure http route
 
 https://docs.openshift.com/container-platform/4.9/networking/routes/route-configuration.html#nw-path-based-routes_route-configuration
+
+
+
+## ssh into container
+
+```
+oc rsh <pod>
+```
+
+# Networking // enabling routes for a project
+
+An openshift project will typically include services and controllers. 
+A service is typically some sort of webservice that we are going to be
+deploying. Controllers are actually also services but typically they are
+*special* in that they run on the control plane and are used to control the
+resources that a particular service gets, i.e. They communicate with the
+apiserver.
+
+## Configuring network interfaces in Linux Containers
+
+CNI (Cloud Network Interface) is a network plugin for kubernetes. It strives to
+make it possible to enable networking in and on kubernetes. Specifically, it
+leverages linux network namespaces to accomplish this goal.
+
+### network namespaces
+
+Aims: 
++ bring network capabilities to containers
+ - virtual network device(s) in each container
+ - bindings to port-number space established per namespace
+ - rules for routing make is possible to direct packets to virtual device of
+   specific container 
+
+
+### Typical client server communcation model
+```                 __________                                    __________ 
+                    |        |                                    |        | 
+                 /` |   Web  | <----- application protocol -----> |   Web  | application
+           user {   | client |                                    | server | layer
+           proc  \, |________|                                    |________|
+                           ^                                       ^   ^
+                         | :                                       :   |
+                         V .                                       .
+                    _______:___                                   _:_________
+                 /` |      .  |                                   |.        |
+                /   |   TCP:  | <-------- tcp protocol ----->     |:  TCP   | transport 
+               /    |______.__|                                   |.________| layer
+              [          | :                                       :  ^
+     kernel   {     _____V_.___                                   _.__|______
+     space    [     |      :  |                                   |:        |
+               \    |   IP .  | <-------- tcp protocol ----->     |.  IP    | network
+                \   |______:__|                                   |:________| layer
+                 \,      | .                                       .  ^
+                         V :                                       :  |
+                    _______.___                                   _._________
+                    |      :  |                                   |:        |
+                    | Ethernet| <---- ethernet protocol ----->    |.Ethernet| datalink 
+                    | Driver  |                                   |:Driver  | layer
+                    |______.__|                                   |.________|
+                         | :                                       :  ^
+                         | .........................................  |
+        _________________v____________________________________________|___________
+                                     Ethernet
+
+```
+
