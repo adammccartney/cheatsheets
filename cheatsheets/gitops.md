@@ -8,7 +8,7 @@ give the git url when creating a new app with argo cd. Argo will do the rest
 
 ## argocd url
 
-(https://application-gitops-server-application-gitops.apps.dev-ocp1.nw.mdw.ac.at/login?return_url=https%3A%2F%2Fapplication-gitops-server-application-gitops.apps.dev-ocp1.nw.mdw.ac.at%2Fapplications)
+[](https://application-gitops-server-application-gitops.apps.dev-ocp1.nw.mdw.ac.at/login?return_url=https%3A%2F%2Fapplication-gitops-server-application-gitops.apps.dev-ocp1.nw.mdw.ac.at%2Fapplications)
 
 ## gitops-tree
 
@@ -131,4 +131,62 @@ command using `oc` and to save the output to a yaml file.
 ```
 oc adm policy add rolebinding ...
 oc get rolebindings -oyaml admin > admin-rolebinding.yaml
+```
+
+
+# Sealed secrets
+
+There's a bit of a knack to setting up a sealed secret with kubeseal:
+
+```.dockerconfigjson
+{
+  "auths": {
+    "https://gitlab.mdw.ac.at:5050":{
+        "username":"<GITLAB_USERNAME>",
+        "password":"<TOKEN>",
+        "auth":"BASE_64_BASIC_AUTH_CREDENTIALS"
+     }
+  }
+}
+```
+
+### BASE_64_BASIC_AUTH_CREDENTIALS
+
+```
+echo -n "{REGISTRY_USERNAME}:{REGISTRY_PASSWORD}" | base64
+```
+
+
+### encode this dockerconfigjson
+
+```
+cat .dockerconfigjson | base64
+```
+
+
+### create a secret file
+
+```ostest-gitlab-deploytoken.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: registry-credentials
+  namespace: default
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: BASE_64_ENCODED_DOCKER_FILE
+```
+
+
+### create a sealed secret:
+
+```
+kubeseal --controller-namespace sealed-secrets --scope cluster-wide -oyaml < secret-ostest-gitlab-deploytoken.yaml > sealed-secret-ostest-gitlab-deploytoken.yaml
+```
+
+
+### apply the secret
+
+```
+kubectl apply -f secret-ostest-gitlab-deploytoken.yml
 ```

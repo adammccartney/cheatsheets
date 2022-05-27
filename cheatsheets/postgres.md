@@ -87,3 +87,21 @@ DELETE FROM django_migrations WHERE id = 28
 ```
 
 SELECT pg_catalog.setval('mdwuser_customuser_id_seq', 3, false);
+
+## Run psql on another port
+
+```
+sudo su - postgres -c "psql --port=5435"
+```
+
+or as postgres
+```
+postgres ~>psql --port=5435 
+```
+
+
+## Nuxeo specific selects
+
+```
+SELECT * FROM hierarchy WHERE primarytype = 'Audio';
+```
