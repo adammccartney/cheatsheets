@@ -104,3 +104,11 @@ Aims:
 
 ```
 
+
+## Volumes (notes from kubernetes best practices by o'reilly)
++ limit their use to pods using multiple containers that share data
++ use hostDir when access to data is required by node-based agents or services
++ try to identify any services that write their critical application logs to
+  the local disk and redirect those to `stdout` and/or `stderr`, then allow a
+  kubernetes aware log aggregator to stream the logs instead of leveraging the
+  volume map.
