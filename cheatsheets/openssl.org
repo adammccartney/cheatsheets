@@ -1,0 +1,43 @@
+* Self signed cert
+As outlined in openssl-cookbook-3ed.pdf
+
+** create keypair
+*** pub/private keypair
+  #+begin_src shell
+  openssl genpkey -out os.key \
+  -algorithm RSA \
+  -pkeyopt rsa_keygen_bits:2048 \
+  -aes-128-cbc 
+  #+end_src
+  
+**** display structured contents 
+     #+begin_src shell
+     openssl pkey -in os.key -text -noout
+     #+end_src
+
+*** extract public key part
+    #+begin_src shell
+    openssl pkey -in os.key -pubout -out os-public.key
+    #+end_src
+    
+
+** Create Certificate Signing Requests
+   #+begin_src shell
+   openssl req -new -key os.key -out os.csr
+   #+end_src
+   
+*** Create from existing Certificates
+    #+begin_src shell
+    openssl x509 -x509toreq -in os.crt -out os.csr -signkey os.key
+    #+end_src
+    
+
+*** Sign Your Own Certificates
+    #+begin_src shell
+    openssl x509 -req -days 365 -in os.csr -signkey os.key -out os.crt
+    #+end_src
+    
+** Conversion to PEM format
+   #+begin_src shell
+   openssl x509 -inform PEM -in
+   #+end_src

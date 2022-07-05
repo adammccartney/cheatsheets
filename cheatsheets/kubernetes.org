@@ -1,0 +1,20 @@
+#+TITLE: notes on kubernetes
+
+* Keeping pods healthy
+** Display logs of crashed pod
+   #+begin_src shell
+   oc get logs <pod> --previous
+   #+end_src
+   
+* Services
+** Debugging Services
+Taken from kubernetes in action
+1. You have to connect to the service's clusterIP from inside the cluster
+2. Don't bother pinging the service's cluster IP - it's virtual
+3. Make sure the readiness probe is succeeding (otherwise pod won't be part of service)
+4. Confirm that a pod is part of the service with `kubectl get endpoints`
+5. If you're trying to access the pod via FQDN or a part of it, try the IP instead
+6. Double check that you are connecting to the exposed port and not target port
+7. Connect to the pod IP directly to confirm the pod is accepting connections
+8. If you can't access your app through the pod's IP, make sure your app isn't only 
+   binding to localhost.
