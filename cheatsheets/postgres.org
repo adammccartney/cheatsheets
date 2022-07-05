@@ -1,0 +1,158 @@
+* Postgres Setup & Admin
+** Source compiled on Debian/Ubuntu
+   :PROPERTIES:
+   :CUSTOM_ID: source-compiled-on-debianubuntu
+   :END:
+
+The hand-compiled versions on on debian will try to set the Unix socket
+as =/var/run/postgresql=, this conflicts with the settings created by
+the hand-compiled version and will emit the error:
+
+#+begin_src shell
+  psql: error: could not connect to server: No such file or directory
+          Is the server running locally and accepting
+                  connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+#+end_src
+
+The workaround for this is to run:
+
+#+begin_src shell
+  psql -h /var/run/postgresql
+#+end_src
+
+** Importing a db from backup
+   :PROPERTIES:
+   :CUSTOM_ID: importing-a-db-from-backup
+   :END:
+*** Restore Backup
+    :PROPERTIES:
+    :CUSTOM_ID: restore-backup
+    :END:
+    #+begin_src shell
+    
+  pg_restore -x --no-privileges --if-exists -1 -c -U postgres -d scheitportal /home/adam/scheit_backup_4-10-21
+    #+end_src
+
+* DB Setup & Admin
+** Create db  
+#+begin_src shell
+createdb newdb
+#+end_src
+
+** Modify Database Roles
+    :PROPERTIES:
+    :CUSTOM_ID: database-roles
+    :END:
+*** psql commands
+
+The db that is being imported will likely have a specific role
+associated with it. This role needs creation. Any of the following
+commands are helpful in this respect.
+
+#+begin_src shell
+  psql> CREATE ROLE name;
+#+end_src
+
+#+begin_src shell
+  psql> DROP ROLE name;
+#+end_src
+
+*** Wrappers to use these commands from system shell:
+
+#+begin_src shell
+  createuser name
+  dropuser name
+#+end_src
+
+*** Checks in SQL to see if it worked
+Check if it worked:
+
+#+begin_src sql
+  psql> SELECT rolname FROM pg_roles;
+#+end_src
+
+Check if the permissions are the same as they were with dumped db
+#+begin_src sql
+  psql> SELECT * FROM pg_roles;
+#+end_src
+
+** Alter Role permissions
+   :PROPERTIES:
+   :CUSTOM_ID: alter-role-permissions
+   :END:
+
+   #+begin_src sql
+   CREATE ROLE user_name PASSWORD 'pass' NOSUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;
+   ALTER USER tester CREATEDB CREATEROLE LOGIN;
+   ALTER DATABASE test_db OWNER TO tester
+   DELETE FROM django_migrations WHERE id = 28
+   #+end_src
+
+   #+begin_src sql
+   
+   SELECT pg_catalog.setval('mdwuser_customuser_id_seq', 3, false);
+   #+end_src
+
+* Interact with DB
+** Get overview
+   Functions and commands to quickly establish an overview of what is on
+   the postgres db server.
+*** List all available databases
+
+    #+begin_src shell
+    pqsl> \l
+    #+end_src
+    
+    #+begin_src sql
+    SELECT * FROM pg_database;
+    #+end_src
+    
+*** List all tables in db        
+
+    #+begin_src shell
+    postgres> \d
+    #+end_src
+
+    #+begin_src sql
+    SELECT * from django_migrations;
+    #+end_src
+
+* Handle Connections
+** View what clusters are running on the system
+   #+begin_src shell
+   pg_lsclusters
+   #+end_src
+** Start a cluster
+   #+begin_src shell
+   pg_ctlcluster <vesion> <name> start
+   #+end_src
+** Run psql on another port
+   :PROPERTIES:
+   :CUSTOM_ID: run-psql-on-another-port
+   :END:
+
+   #+begin_src shell
+    sudo su - postgres -c "psql --port=5435"
+   #+end_src
+
+    or as postgres
+    #+begin_src shell
+    postgres ~>psql --port=5435 
+    #+end_src
+
+** Secure Communication
+*** Connect to a remote cluster
+    #+begin_src shell
+    psql -D <database> -U <user> -p <port> -h hostname 
+    #+end_src
+* Application specific
+This block contains info on some specific functionality that relates to 
+operations on databases in specific applications.
+** Nuxeo specific selects
+   :PROPERTIES:
+   :CUSTOM_ID: nuxeo-specific-selects
+   :END:
+
+   #+begin_src sql
+    SELECT * FROM hierarchy WHERE primarytype = 'Audio';
+   #+end_src
