@@ -73,6 +73,17 @@ Select a block of text visually and invoke `gq`
 
 `:help visual-operators`
 
+## Search and replace across multiple buffers
+
+```
+:bufdo %s/rhythm/petunias/gce
+```
+
+then 
+
+```
+:bufdo wq!
+=======
 ## Open a number of files in tabs
 
 ```
