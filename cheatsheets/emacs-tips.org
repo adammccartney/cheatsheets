@@ -1,0 +1,38 @@
+* Basics 
+
+** Display
+*** choose a window for displaying abuffer
+    #+begin_src emacs-lisp
+        C-x 4 C-o
+    #+end_src
+*** Font size
+
+    increase 
+    #+begin_src emacs-lisp
+        C-c C-+
+    #+end_src
+    decrease
+
+    #+begin_src emacs-lisp
+        C-c C--
+    #+end_src
+
+
+# Python
+
+- Useful commands
+
+
+** Navigating
+* Move buffers: 
+  #+begin_src emacs-lisp
+    C-x o
+  #+end_src
+* Run python file in venv Notebook: C-c C-c
+
+# C & C++ code
+
+# Finding errors
+
+- to jump to a source code error, simply comile and hit <C-x `> if an error is
+  thrown
