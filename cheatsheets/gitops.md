@@ -136,47 +136,21 @@ oc get rolebindings -oyaml admin > admin-rolebinding.yaml
 
 # Sealed secrets
 
-There's a bit of a knack to setting up a sealed secret with kubeseal:
 
-```.dockerconfigjson
-{
-  "auths": {
-    "https://gitlab.mdw.ac.at:5050":{
-        "username":"<GITLAB_USERNAME>",
-        "password":"<TOKEN>",
-        "auth":"BASE_64_BASIC_AUTH_CREDENTIALS"
-     }
-  }
-}
+## Create a secret with openshift
+
+```sh
+oc create secret --help
 ```
 
-### BASE_64_BASIC_AUTH_CREDENTIALS
+will give you info on the type of secret that needs to be created
 
+```sh
+oc create secret docker-registry <pull_secret_name> \
+--docker-server=<registry_server> \
+--docker-username=<user_name> \
+--docker-password=<password>
 ```
-echo -n "{REGISTRY_USERNAME}:{REGISTRY_PASSWORD}" | base64
-```
-
-
-### encode this dockerconfigjson
-
-```
-cat .dockerconfigjson | base64
-```
-
-
-### create a secret file
-
-```ostest-gitlab-deploytoken.yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: registry-credentials
-  namespace: default
-type: kubernetes.io/dockerconfigjson
-data:
-  .dockerconfigjson: BASE_64_ENCODED_DOCKER_FILE
-```
-
 
 ### create a sealed secret:
 

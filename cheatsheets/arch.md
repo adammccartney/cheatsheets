@@ -7,19 +7,21 @@ loadkeys de-latin1
 
 ## check netconnect
 
-```
+```sh
 ip link
 ping archlinux.org
 ```
 
 if this fails, run:
 
-```
+```sh
 dhcpcd
 ```
 ## make efi and root partitions
 
 ### Sector to mb conversion
+
+
 One sector = 256 bytes
 One kilo-byte = 1,024 bytes = 4 sectors
 One page = 4,096 bytes = 4k = 16 sectors
@@ -104,7 +106,4 @@ efibootmgr --create --label "Arch Linux cgroups1" -l /vmlinuz-linux -u
 
 ## useful setup script
 
-look at wincent's script
-```
-https://raw.githubusercontent.com/wincent/wincent/master/contrib/arch-linux/arch-linux-install.sh
-```
+look at [wincent's script](https://raw.githubusercontent.com/wincent/wincent/master/contrib/arch-linux/arch-linux-install.sh)

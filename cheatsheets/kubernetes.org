@@ -3,7 +3,7 @@
 * Keeping pods healthy
 ** Display logs of crashed pod
    #+begin_src shell
-   oc get logs <pod> --previous
+   oc logs <pod> --previous
    #+end_src
    
 * Services
